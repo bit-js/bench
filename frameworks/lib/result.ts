@@ -12,10 +12,10 @@ interface FrameworkResults {
     total: number;
 }
 
-type ParsedResult = ['', framework: string, runtime: string, avg: number, ...number[], ''];
+type ParsedResult = [framework: string, runtime: string, avg: number, ...number[]];
 
 function compareParsedResult(a: ParsedResult, b: ParsedResult) {
-    return b[3] - a[3];
+    return b[2] - a[2];
 }
 
 export class ResultWriter {
@@ -70,17 +70,16 @@ export class ResultWriter {
 
     [Symbol.dispose]() {
         // Write results label
-        const labels = ['', 'Frameworks', 'Runtime', 'Average'];
+        const labels = ['Frameworks', 'Runtime', 'Average'];
 
         for (const category of this.categories)
             labels.push(category.name);
-        labels.push('');
 
-        this.writer.write(labels.join('|'));
+        this.writer.write(`| ${labels.join(' | ')} |`);
         this.writer.write('\n');
 
         // Write delimiters
-        this.writer.write(`|${'---|'.repeat(labels.length)}\n`);
+        this.writer.write(`|${' :---: |'.repeat(labels.length)}\n`);
 
         // Sort the results
         const resultArray: ParsedResult[] = [];
@@ -88,14 +87,14 @@ export class ResultWriter {
 
         for (const framework in results)
             resultArray.push([
-                '', framework, results[framework].runtime,
-                results[framework].avg, ...results[framework].values, ''
+                framework, results[framework].runtime,
+                results[framework].avg, ...results[framework].values
             ]);
         resultArray.sort(compareParsedResult);
 
         // Render all results
         for (const result of resultArray) {
-            this.writer.write(result.join('|'));
+            this.writer.write(`| ${result.join(' | ')} |`);
             this.writer.write('\n');
         }
 
