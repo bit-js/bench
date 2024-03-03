@@ -1,0 +1,12 @@
+{
+  "name": "byte",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "@bit-js/byte": "^1.0.4"
+  }
+}
