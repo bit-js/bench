@@ -71,12 +71,16 @@ export class ResultWriter {
     [Symbol.dispose]() {
         // Write results label
         const labels = ['', 'Frameworks', 'Runtime', 'Average'];
+
         for (const category of this.categories)
             labels.push(category.name);
         labels.push('');
 
         this.writer.write(labels.join('|'));
         this.writer.write('\n');
+
+        // Write delimiters
+        this.writer.write(`|${'---|'.repeat(labels.length)}\n`);
 
         // Sort the results
         const resultArray: ParsedResult[] = [];

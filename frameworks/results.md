@@ -1,4 +1,5 @@
 |Frameworks|Runtime|Average|Home|
-|Byte|Bun|12971.27|12971.27|
+|---|---|---|---|---|---|
+|Byte|Bun|16339|16339|
 # Runtimes
 `Bun`: 1.0.29
