@@ -20,7 +20,7 @@ function compareParsedResult(a: ParsedResult, b: ParsedResult) {
 
 export class ResultWriter {
     readonly writer: FileSink;
-    readonly runtimeVersionsBuilder: string[] = ['# Runtimes\n'];
+    readonly runtimeVersionsBuilder: string[] = [];
 
     results: Record<string, FrameworkResults> = {};
 
@@ -47,7 +47,7 @@ export class ResultWriter {
      * Set the version for a runtime
      */
     setRuntimeVersion(runtime: string, version: string) {
-        this.runtimeVersionsBuilder.push('`', runtime, '`', ': ', version, '\n');
+        this.runtimeVersionsBuilder.push('**', runtime, '**', ': ', version, '\n');
     }
 
     /**
