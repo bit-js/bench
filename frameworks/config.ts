@@ -1,5 +1,6 @@
 import type { GlobalConfig } from '@typings/global';
 import requestBody from './assets/body.json';
+import fixNum from './lib/utils/fixNum';
 
 function toURL(path: string) {
     return `http://localhost:3000${path}`;
@@ -86,7 +87,7 @@ const config: GlobalConfig = {
         const res = JSON.parse(output).result.rps.mean;
 
         console.log(`* Mean: ${res}`);
-        return +(+res).toFixed(2);
+        return fixNum(res);
     }
 };
 

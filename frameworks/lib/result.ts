@@ -1,6 +1,7 @@
 import type { FrameworkConfig } from '@typings/framework';
 import type { Test } from '@typings/global';
 import type { FileSink } from 'bun';
+import fixNum from './utils/fixNum';
 
 interface FrameworkResults {
     values: number[];
@@ -65,7 +66,7 @@ export class ResultWriter {
      */
     finalizeResult(framework: string) {
         const frameworkStore = this.results[framework];
-        frameworkStore.avg = frameworkStore.total / frameworkStore.values.length;
+        frameworkStore.avg = fixNum(frameworkStore.total / frameworkStore.values.length);
     }
 
     [Symbol.dispose]() {
@@ -97,6 +98,7 @@ export class ResultWriter {
             this.writer.write(`| ${result.join(' | ')} |`);
             this.writer.write('\n');
         }
+        this.writer.write('\n');
 
         // Write runtime versions
         this.writer.write(this.runtimeVersionsBuilder.join(''));
