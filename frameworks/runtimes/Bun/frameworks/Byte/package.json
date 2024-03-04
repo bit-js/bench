@@ -7,6 +7,6 @@
     "typescript": "latest"
   },
   "dependencies": {
-    "@bit-js/byte": "^1.0.4"
+    "@bit-js/byte": "^1.0.5"
   }
 }
