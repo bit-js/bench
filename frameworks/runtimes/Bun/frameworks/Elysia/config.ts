@@ -6,3 +6,4 @@ const options: FrameworkConfig = {
 };
 
 export default options;
+

@@ -30,6 +30,10 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         const frameworkPath = `${runtimePath}/frameworks/${frameworkName}`;
         const frameworkConfig: FrameworkConfig = await import(`${frameworkPath}/config.ts`).then(getDefault);
 
+        // Run build script
+        if (typeof frameworkConfig.build === 'function')
+            frameworkConfig.build(frameworkPath);
+
         // Prepare result store
         writer.prepareFramework(runtimeName, frameworkName, frameworkConfig);
 

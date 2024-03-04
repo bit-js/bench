@@ -42,7 +42,9 @@ const config: GlobalConfig = {
 
             async validate(res) {
                 if (!res.ok) throw new Error('Response is not ok');
-                if (!Bun.deepEquals(await res.json(), requestBody)) throw new Error('Response body should be the JSON body sent');
+
+                const body = await res.json();
+                if (!Bun.deepEquals(body, requestBody)) throw new Error(`Response body should be the JSON body sent, instead recieved: ${body}`);
             }
         }
     ],
@@ -50,7 +52,6 @@ const config: GlobalConfig = {
     // Validate each test
     async validateTest(test) {
         console.info(`- Running test "${test.name}"`);
-        console.info(`+ ${test.description}`);
 
         test.validate(await fetch(toURL(test.path), {
             method: test.method,
@@ -67,8 +68,8 @@ const config: GlobalConfig = {
         const args = [
             'bombardier', '--fasthttp',
             // Default options 
-            '--connections', '250',
-            '--duration', '20s',
+            '--connections', '1000',
+            '--duration', '40s',
             // Print format
             '--format', 'json',
             '--print', 'result'
@@ -82,8 +83,6 @@ const config: GlobalConfig = {
         args.push(toURL(test.path));
 
         const output = Bun.spawnSync(args).stdout.toString();
-        console.log(output);
-
         const res = JSON.parse(output).result.rps.mean;
 
         console.log(`* Mean: ${res}`);

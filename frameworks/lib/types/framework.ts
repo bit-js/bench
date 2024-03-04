@@ -8,4 +8,9 @@ export interface FrameworkConfig {
      * The main file
      */
     main: string;
+
+    /**
+     * Build script
+     */
+    build?(cwd: string): Promise<void>;
 }
