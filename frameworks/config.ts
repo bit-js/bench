@@ -6,6 +6,20 @@ function toURL(path: string) {
     return `http://localhost:3000${path}`;
 }
 
+// Make everything as random as possible
+function makePart(charset: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_$1234567890') {
+    const result = [];
+    const charsetLen = charset.length;
+    const length = 30 + Math.round(Math.random() * 160);
+
+    for (let cnt = 0; cnt < length; ++cnt)
+        result.push(charset[Math.floor(Math.random() * charsetLen)]);
+
+    return result.join('');
+}
+
+const randomID = makePart();
+
 const config: GlobalConfig = {
     tests: [
         {
@@ -24,17 +38,17 @@ const config: GlobalConfig = {
             name: 'Query',
             description: 'Should return the query value as a response',
 
-            path: '/user/:id',
+            path: `/user/${randomID}`,
             method: 'GET',
 
             async validate(res) {
                 if (!res.ok) throw new Error('Response is not ok');
-                if (await res.text() !== ':id') throw new Error('Response body should be corresponding to the ID parameter value');
+                if (await res.text() !== randomID) throw new Error('Response body should be corresponding to the ID parameter value');
             }
         },
         {
             name: 'JSON',
-            description: 'Should return the JSON body as a response',
+            description: 'Should return the JSON body message as a response',
 
             path: '/json',
             method: 'POST',
@@ -44,7 +58,7 @@ const config: GlobalConfig = {
                 if (!res.ok) throw new Error('Response is not ok');
 
                 const body = await res.json();
-                if (!Bun.deepEquals(body, requestBody)) throw new Error(`Response body should be the JSON body sent, instead recieved: ${body}`);
+                if (!Bun.deepEquals(body, requestBody.message)) throw new Error(`Response body should be the JSON body sent, instead recieved: ${body}`);
             }
         }
     ],
@@ -69,7 +83,7 @@ const config: GlobalConfig = {
             'bombardier', '--fasthttp',
             // Default options 
             '--connections', '1000',
-            '--duration', '40s',
+            '--requests', '1000000',
             // Print format
             '--format', 'json',
             '--print', 'result'

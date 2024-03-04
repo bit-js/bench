@@ -1,4 +1,7 @@
 {
     "id": 1,
-    "name": "Reve"
+    "message": {
+        "size": "2",
+        "payload": "Hi"
+    }
 }

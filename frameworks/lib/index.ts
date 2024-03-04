@@ -41,11 +41,12 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         const serverProcess = runtimeConfig.run(`${frameworkPath}/${frameworkConfig.main}`, frameworkPath);
 
         console.log(`Preparing framework: ${frameworkName}`);
-        Bun.sleepSync(5000);
+        await Bun.sleep(10000);
 
         // Test the server 
         for (const test of config.tests) {
             await config.validateTest(test);
+            await Bun.sleep(10000);
 
             // Result is added in the order of tests
             const result = config.runTest(test);

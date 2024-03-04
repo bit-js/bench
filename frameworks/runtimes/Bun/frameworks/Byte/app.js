@@ -8,5 +8,4 @@ export default new Byte()
     // Parsing stuff
     .post('/json', {
         body: parse.json()
-    }, (ctx) => send.json(ctx.state.body));
-
+    }, (ctx) => send.json(ctx.state.body.message));

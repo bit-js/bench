@@ -6,4 +6,4 @@ export default new Hono()
     .get('/user/:id', (ctx) => ctx.body(ctx.req.param('id')))
 
     // Parsing stuff
-    .post('/json', async (ctx) => ctx.json(await ctx.req.json()));
+    .post('/json', async (ctx) => ctx.json((await ctx.req.json()).message));

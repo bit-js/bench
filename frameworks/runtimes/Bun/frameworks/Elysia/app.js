@@ -6,6 +6,6 @@ const app = new Elysia()
     .get('/user/:id', (ctx) => ctx.params.id)
 
     // Parsing stuff
-    .post('/json', (ctx) => ctx.body, { type: 'json' });
+    .post('/json', (ctx) => ctx.body.message, { type: 'json' });
 
 app.listen(3000);
