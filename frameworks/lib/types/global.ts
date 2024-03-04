@@ -22,5 +22,5 @@ export interface GlobalConfig {
     /**
      * Run the test and return the result
      */
-    runTest(test: Test): number;
+    runTest(test: Test): Promise<number>;
 }

@@ -1,4 +1,7 @@
+import { $ } from 'bun';
+
 import type { GlobalConfig } from '@typings/global';
+
 import requestBody from './assets/body.json';
 import fixNum from './lib/utils/fixNum';
 
@@ -78,12 +81,12 @@ const config: GlobalConfig = {
     /**
      * Run the benchmark
      */
-    runTest(test) {
+    async runTest(test) {
         const args = [
             'bombardier', '--fasthttp',
             // Default options 
             '--connections', '1000',
-            '--requests', '1000000',
+            '--duration', '30s',
             // Print format
             '--format', 'json',
             '--print', 'result'
@@ -96,7 +99,7 @@ const config: GlobalConfig = {
 
         args.push(toURL(test.path));
 
-        const output = Bun.spawnSync(args).stdout.toString();
+        const output = await $`${args}`.text();
         const res = JSON.parse(output).result.rps.mean;
 
         console.log(`* Mean: ${res}`);

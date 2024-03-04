@@ -49,7 +49,7 @@ for (const runtimeName of readdirSync(runtimesPath)) {
             await Bun.sleep(10000);
 
             // Result is added in the order of tests
-            const result = config.runTest(test);
+            const result = await config.runTest(test);
             writer.addResult(frameworkName, result);
         }
 
