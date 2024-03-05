@@ -44,21 +44,26 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         console.log(`Preparing framework: ${frameworkName}`);
         Bun.sleepSync(10000);
 
-        // Test the server 
-        for (const test of config.tests) {
-            await config.validateTest(test);
-            if (isTestMode) continue;
+        try {
+            // Test the server 
+            for (const test of config.tests) {
+                await config.validateTest(test);
+                if (isTestMode) continue;
 
-            Bun.sleepSync(10000);
+                Bun.sleepSync(10000);
 
-            // Result is added in the order of tests
-            const result = await config.runTest(test);
-            writer.addResult(frameworkName, result);
+                // Result is added in the order of tests
+                const result = await config.runTest(test);
+                writer.addResult(frameworkName, result);
+            }
+        } catch (e) {
+            console.log(`${frameworkName} failed!`);
+            process.exit();
+        } finally {
+            // End the server
+            serverProcess.kill();
+            writer.finalizeResult(frameworkName);
         }
-
-        // End the server
-        serverProcess.kill();
-        writer.finalizeResult(frameworkName);
 
         Bun.sleepSync(1000);
     }
