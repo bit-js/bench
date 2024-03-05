@@ -1,4 +1,4 @@
-import { Byte, parse, send } from '@bit-js/byte';
+import { Byte, send } from '@bit-js/byte';
 
 export default new Byte()
     // Basic routes
@@ -6,6 +6,4 @@ export default new Byte()
     .get('/user/:id', (ctx) => send.body(ctx.params.id))
 
     // Parsing stuff
-    .post('/json', {
-        body: parse.json()
-    }, (ctx) => send.json(ctx.state.body.message));
+    .post('/json', () => send.json({ time: performance.now() }));

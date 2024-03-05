@@ -1,8 +1,5 @@
 import { $ } from 'bun';
-
 import type { GlobalConfig } from '@typings/global';
-
-import requestBody from './assets/body.json';
 import fixNum from './lib/utils/fixNum';
 
 function toURL(path: string) {
@@ -55,13 +52,12 @@ const config: GlobalConfig = {
 
             path: '/json',
             method: 'POST',
-            bodyFile: './assets/body.json',
 
             async validate(res) {
                 if (!res.ok) throw new Error('Response is not ok');
 
-                const body = await res.json();
-                if (!Bun.deepEquals(body, requestBody.message)) throw new Error(`Response body should be the JSON body sent, instead recieved: ${body}`);
+                const body = await res.json() as any;
+                if (typeof body.time !== 'number') throw new Error(`Response body should include a valid "time" property, instead recieved: ${body}`);
             }
         }
     ],
