@@ -16,6 +16,7 @@ using writer = new ResultWriter(config.tests);
 
 // Check every runtimes
 const runtimesPath = resolve('./runtimes');
+const isTestMode = Bun.env.NODE_ENV === 'test';
 
 for (const runtimeName of readdirSync(runtimesPath)) {
     const runtimePath = `${runtimesPath}/${runtimeName}`;
@@ -41,12 +42,14 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         const serverProcess = runtimeConfig.run(`${frameworkPath}/${frameworkConfig.main}`, frameworkPath);
 
         console.log(`Preparing framework: ${frameworkName}`);
-        await Bun.sleep(10000);
+        Bun.sleepSync(10000);
 
         // Test the server 
         for (const test of config.tests) {
             await config.validateTest(test);
-            await Bun.sleep(10000);
+            if (isTestMode) continue;
+
+            Bun.sleepSync(10000);
 
             // Result is added in the order of tests
             const result = await config.runTest(test);
@@ -56,5 +59,7 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         // End the server
         serverProcess.kill();
         writer.finalizeResult(frameworkName);
+
+        Bun.sleepSync(1000);
     }
 }

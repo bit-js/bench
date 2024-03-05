@@ -9,6 +9,7 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "bench": "bun run lib/index.ts"
+    "bench": "bun run lib/index.ts",
+    "validate": "NODE_ENV=test bun run lib/index.ts"
   }
 }

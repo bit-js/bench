@@ -2,10 +2,6 @@
   "name": "hono",
   "module": "index.ts",
   "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest",
-    "typescript": "latest"
-  },
   "dependencies": {
     "hono": "^4.0.9"
   }
