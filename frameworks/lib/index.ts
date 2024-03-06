@@ -42,7 +42,7 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         const serverProcess = runtimeConfig.run(`${frameworkPath}/${frameworkConfig.main}`, frameworkPath);
 
         console.log(`Preparing framework: ${frameworkName}`);
-        Bun.sleepSync(10000);
+        Bun.sleepSync(5000);
 
         try {
             // Test the server 
@@ -50,7 +50,7 @@ for (const runtimeName of readdirSync(runtimesPath)) {
                 await config.validateTest(test);
                 if (isTestMode) continue;
 
-                Bun.sleepSync(10000);
+                Bun.sleepSync(5000);
 
                 // Result is added in the order of tests
                 const result = await config.runTest(test);
