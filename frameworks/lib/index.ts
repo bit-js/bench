@@ -31,6 +31,8 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         const frameworkPath = `${runtimePath}/frameworks/${frameworkName}`;
         const frameworkConfig: FrameworkConfig = await import(`${frameworkPath}/config.ts`).then(getDefault);
 
+        console.log(`Preparing framework: ${frameworkName}`);
+
         // Run build script
         if (typeof runtimeConfig.build === 'function')
             runtimeConfig.build(frameworkPath);
@@ -42,8 +44,6 @@ for (const runtimeName of readdirSync(runtimesPath)) {
 
         // Boot up the server
         const serverProcess = runtimeConfig.run(`${frameworkPath}/${frameworkConfig.main}`, frameworkPath);
-
-        console.log(`Preparing framework: ${frameworkName}`);
         Bun.sleepSync(5000);
 
         try {
