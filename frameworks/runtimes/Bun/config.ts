@@ -10,6 +10,10 @@ const env: Record<string, string> = {
 
 const config: RuntimeConfig = {
     run: (path, cwd) => Bun.spawn(['bun', 'run', path], { env, cwd }),
+    build: (cwd) => {
+        console.log('Installing dependencies...');
+        Bun.spawnSync(['bun', 'i'], { cwd });
+    },
     version: Bun.version
 };
 

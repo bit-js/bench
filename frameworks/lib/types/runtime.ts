@@ -8,6 +8,11 @@ export interface RuntimeConfig {
     run(path: string, cwd: string): Subprocess;
 
     /**
+     * Default build command
+     */
+    build?(cwd: string): void;
+
+    /**
      * Current runtime version
      */
     version: string;
