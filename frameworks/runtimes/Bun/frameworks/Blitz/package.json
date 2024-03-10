@@ -1,8 +1,0 @@
-{
-  "name": "bun",
-  "module": "index.ts",
-  "type": "module",
-  "dependencies": {
-    "@bit-js/blitz": "^1.0.9"
-  }
-}
