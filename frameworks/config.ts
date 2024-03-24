@@ -3,7 +3,7 @@ import type { GlobalConfig } from '@typings/global';
 import fixNum from './lib/utils/fixNum';
 
 function toURL(path: string) {
-    return `http://localhost:3000${path}`;
+    return `http://127.0.0.1:3000${path}`;
 }
 
 // Make everything as random as possible
