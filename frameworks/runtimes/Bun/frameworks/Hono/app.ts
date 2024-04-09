@@ -1,9 +1,10 @@
 import { Hono } from 'hono';
+import { Database } from 'bun:sqlite';
+
+const db = new Database(Bun.env.DB_PATH);
+const items = db.query('select * from Items limit 50');
 
 export default new Hono()
-    // Basic routes
     .get('/', (ctx) => ctx.body('Hi'))
     .get('/user/:id', (ctx) => ctx.body(ctx.req.param('id')))
-
-    // Parsing stuff
-    .post('/json', (ctx) => ctx.json({ time: performance.now() }));
+    .get('/items', (ctx) => ctx.json(items.all()));

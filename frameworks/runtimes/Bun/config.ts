@@ -1,12 +1,14 @@
-import type { RuntimeConfig } from '@typings/runtime';
+import type { Env, RuntimeConfig } from '@typings/runtime';
 import { $ } from 'bun';
+import { dbPath } from '@db';
 
-const env: Record<string, string> = {
+const env: Env = {
     NODE_ENV: 'production',
+    DB_PATH: dbPath,
 
     BUN_JSC_jitPolicyScale: '0.0',
     BUN_JSC_thresholdForOptimizeSoon: '0.0',
-    BUN_JSC_thresholdForJITSoon: '0.0'
+    BUN_JSC_thresholdForJITSoon: '0.0',
 };
 
 const config: RuntimeConfig = {

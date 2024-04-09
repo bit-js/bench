@@ -8,9 +8,9 @@ import { ResultWriter } from './result';
 import type { RuntimeConfig } from '@typings/runtime';
 import type { FrameworkConfig } from '@typings/framework';
 
-function getDefault(imports: any) {
-    return imports.default;
-}
+import { prepareDatabase } from './db';
+
+prepareDatabase();
 
 using writer = new ResultWriter(config.tests);
 
@@ -21,7 +21,7 @@ const isTestMode = Bun.env.NODE_ENV === 'test';
 for (const runtimeName of readdirSync(runtimesPath)) {
     const runtimePath = `${runtimesPath}/${runtimeName}`;
 
-    const runtimeConfig: RuntimeConfig = await import(`${runtimePath}/config.ts`).then(getDefault);
+    const runtimeConfig: RuntimeConfig = (await import(`${runtimePath}/config.ts`)).default;
     console.log(`'${runtimeName}': ${JSON.stringify(runtimeConfig)}`);
 
     writer.setRuntimeVersion(runtimeName, runtimeConfig.version);
@@ -29,7 +29,7 @@ for (const runtimeName of readdirSync(runtimesPath)) {
     // Run each framework
     for (const frameworkName of readdirSync(`${runtimePath}/frameworks`)) {
         const frameworkPath = `${runtimePath}/frameworks/${frameworkName}`;
-        const frameworkConfig: FrameworkConfig = await import(`${frameworkPath}/config.ts`).then(getDefault);
+        const frameworkConfig: FrameworkConfig = (await import(`${frameworkPath}/config.ts`)).default;
 
         console.log(`Preparing framework: ${frameworkName}`);
 

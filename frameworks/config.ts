@@ -1,6 +1,7 @@
 import { $ } from 'bun';
 import type { GlobalConfig } from '@typings/global';
 import fixNum from './lib/utils/fixNum';
+import { getTopItems } from './lib/db';
 
 function toURL(path: string) {
     return `http://127.0.0.1:3000${path}`;
@@ -24,7 +25,7 @@ const randomID = makePart();
 const config: GlobalConfig = {
     tests: [
         {
-            name: 'Static',
+            name: 'Text',
             description: 'Should return "Hi" as a response',
 
             path: '/',
@@ -36,7 +37,7 @@ const config: GlobalConfig = {
             }
         },
         {
-            name: 'Query',
+            name: 'Params',
             description: 'Should return the query value as a response',
 
             path: `/user/${randomID}`,
@@ -53,11 +54,11 @@ const config: GlobalConfig = {
             }
         },
         {
-            name: 'JSON',
-            description: 'Should return the JSON body message as a response',
+            name: 'DB Query',
+            description: 'Query from table Items and return the top 50 items in JSON',
 
-            path: '/json',
-            method: 'POST',
+            path: '/items',
+            method: 'GET',
 
             async validate(res) {
                 if (!res.ok) {
@@ -67,7 +68,14 @@ const config: GlobalConfig = {
                 }
 
                 const body = await res.json() as any;
-                if (typeof body.time !== 'number') throw new Error(`Response body should include a valid "time" property, instead recieved: ${body}`);
+                const expected = getTopItems();
+
+                if (!Bun.deepEquals(body, expected)) {
+                    console.log('Expected:', expected);
+                    console.log('Recieve:', body);
+
+                    throw new Error(`Body is invalid`);
+                }
             }
         }
     ],

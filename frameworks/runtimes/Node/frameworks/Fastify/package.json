@@ -2,5 +2,5 @@
   "name": "fastify",
   "module": "index.ts",
   "type": "module",
-  "dependencies": { "fastify": "^4.26.2" }
+  "dependencies": { "better-sqlite3": "^9.4.5", "fastify": "^4.26.2" }
 }

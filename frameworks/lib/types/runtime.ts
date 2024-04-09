@@ -17,3 +17,8 @@ export interface RuntimeConfig {
      */
     version: string;
 }
+
+export interface Env extends Record<string, string> {
+    NODE_ENV: 'production',
+    DB_PATH: typeof import('@db').dbPath
+}

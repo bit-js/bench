@@ -1,8 +1,10 @@
-import type { RuntimeConfig } from '@typings/runtime';
+import { dbPath } from '@db';
+import type { Env, RuntimeConfig } from '@typings/runtime';
 import { $ } from 'bun';
 
-const env: Record<string, string> = {
-    NODE_ENV: 'production'
+const env: Env = {
+    NODE_ENV: 'production',
+    DB_PATH: dbPath
 };
 
 const version = await $`node -v`.text();

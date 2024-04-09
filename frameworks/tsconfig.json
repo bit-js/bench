@@ -25,7 +25,10 @@
     "paths": {
       "@typings/*": [
         "./lib/types/*"
-      ]
+      ],
+      "@db": [
+        "./lib/db/index.ts"
+      ],
     }
   }
 }

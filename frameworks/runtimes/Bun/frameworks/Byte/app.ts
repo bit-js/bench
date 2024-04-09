@@ -1,9 +1,10 @@
 import { Byte, send } from '@bit-js/byte';
+import { Database } from 'bun:sqlite';
+
+const db = new Database(Bun.env.DB_PATH);
+const items = db.query('select * from Items limit 50');
 
 export default new Byte()
-    // Basic routes
     .get('/', () => send.body('Hi'))
     .get('/user/:id', (ctx) => send.body(ctx.params.id))
-
-    // Parsing stuff
-    .post('/json', () => send.json({ time: performance.now() }));
+    .get('/items', () => send.json(items.all()));
