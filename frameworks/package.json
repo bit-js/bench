@@ -1,0 +1,13 @@
+{
+  "name": "frameworks",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "bench": "bun run lib/index.ts",
+    "validate": "NODE_ENV=test bun run lib/index.ts"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "byte",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "@bit-js/byte": "^1.1.4"
+  }
+}

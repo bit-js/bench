@@ -1,0 +1,6 @@
+{
+  "name": "fastify",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": { "fastify": "^4.26.2" }
+}

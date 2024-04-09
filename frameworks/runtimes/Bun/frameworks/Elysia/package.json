@@ -1,0 +1,8 @@
+{
+  "name": "elysia",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "elysia": "1.0.7"
+  }
+}
