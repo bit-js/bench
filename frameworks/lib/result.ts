@@ -101,7 +101,7 @@ export class ResultWriter {
         this.writer.write('\n');
 
         // Write runtime versions
-        this.writer.write(this.runtimeVersionsBuilder.join(''));
+        this.writer.write(this.runtimeVersionsBuilder.join('\n'));
 
         // Flush
         this.writer.end();
