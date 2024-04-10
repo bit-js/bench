@@ -99,8 +99,8 @@ const config: GlobalConfig = {
         const args = [
             'bombardier', '--fasthttp',
             // Default options 
-            '--connections', '5000',
-            '--duration', '60s',
+            '--connections', '3000',
+            '--duration', '30s',
             // Print format
             '--format', 'json',
             '--print', 'result'
