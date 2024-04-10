@@ -48,7 +48,7 @@ export class ResultWriter {
      * Set the version for a runtime
      */
     setRuntimeVersion(runtime: string, version: string) {
-        this.runtimeVersionsBuilder.push('**', runtime, '**', ': ', version, '\n');
+        this.runtimeVersionsBuilder.push('**', runtime, '**', ': ', version, '\n\n');
     }
 
     /**
@@ -101,7 +101,7 @@ export class ResultWriter {
         this.writer.write('\n');
 
         // Write runtime versions
-        this.writer.write(this.runtimeVersionsBuilder.join('\n'));
+        this.writer.write(this.runtimeVersionsBuilder.join(''));
 
         // Flush
         this.writer.end();
