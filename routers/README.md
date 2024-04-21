@@ -8,3 +8,18 @@ This benchmark requires each router to:
 - Match the route using the context
 - Assign the URL parameters
 - Run the matched handler.
+
+To run the benchmark:
+```bash
+# Install required dependencies
+bun i
+
+# JIT bench with Bun
+bun bench:bun-jit
+
+# JITLess bench with Bun
+bun bench:bun-jitless
+
+# Bench with node
+bun bench:node
+```

@@ -20,8 +20,8 @@
     "trek-router": "^1.2.0"
   },
   "scripts": {
-    "bun:jit": "BUN_JSC_jitPolicyScale=0.0 BUN_JSC_thresholdForOptimizeSoon=0.0 bun run src/bench/index.ts",
-    "bun:jitless": "BUN_JSC_UseJit=0 bun run src/bench/index.ts",
-    "node:build": "bun build src/bench/index.ts --target node --outfile src/bench/index.js"
+    "bench:bun-jit": "BUN_JSC_jitPolicyScale=0.0 BUN_JSC_thresholdForOptimizeSoon=0.0 bun run src/bench/index.ts",
+    "bench:bun-jitless": "BUN_JSC_UseJit=0 bun run src/bench/index.ts",
+    "bench:node": "tsx src/bench/index.ts"
   }
 }
