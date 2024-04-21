@@ -1,0 +1,27 @@
+{
+  "name": "routers",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "mitata": "^0.1.11",
+    "tsx": "^4.7.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@bit-js/blitz": "^1.0.22",
+    "find-my-way": "^8.1.0",
+    "hono": "^4.2.5",
+    "koa-router": "^12.0.1",
+    "koa-tree-router": "^0.12.1",
+    "memoirist": "^0.1.10",
+    "trek-router": "^1.2.0"
+  },
+  "scripts": {
+    "bun:jit": "BUN_JSC_jitPolicyScale=0.0 BUN_JSC_thresholdForOptimizeSoon=0.0 bun run src/bench/index.ts",
+    "bun:jitless": "BUN_JSC_UseJit=0 bun run src/bench/index.ts",
+    "node:build": "bun build src/bench/index.ts --target node --outfile src/bench/index.js"
+  }
+}
