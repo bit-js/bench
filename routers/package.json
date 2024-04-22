@@ -11,7 +11,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@bit-js/blitz": "^1.0.22",
+    "@bit-js/blitz": "^1.2.0",
     "find-my-way": "^8.1.0",
     "hono": "^4.2.5",
     "koa-router": "^12.0.1",

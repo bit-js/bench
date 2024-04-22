@@ -5,7 +5,8 @@ import { group, run, bench } from 'mitata';
 
 async function validate(router: Router, route: Route) {
     const res = router.match(route.req);
-    const text = await res?.text() ?? '';
+    console.log(res)
+    const text = res ? await res.text() : '';
 
     if (text !== route.id) {
         console.log(route);

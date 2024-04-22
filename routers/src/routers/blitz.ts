@@ -1,5 +1,5 @@
 import Blitz from '@bit-js/blitz';
-import { type Router, routes, RequestContext } from '@routes';
+import { type Router, routes, Context } from '@routes';
 
 const router = new Blitz();
 
@@ -10,5 +10,5 @@ for (let i = 0, { length } = routes; i < length; ++i) {
 
 export default {
     name: 'Blitz',
-    match: router.build(RequestContext)
+    match: router.build(Context)
 } satisfies Router;

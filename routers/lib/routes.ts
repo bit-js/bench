@@ -36,19 +36,6 @@ export const routes = [
     route('/very/deeply/nested/route/hello/there')
 ];
 
-// Use for Blitz EdgeRouter
-export class RequestContext {
-    readonly path: string;
-    readonly params: any;
-
-    constructor(req: Request) {
-        const start = req.url.indexOf('/', 12) + 1;
-        const end = req.url.indexOf('?', start);
-
-        this.path = end === -1 ? req.url.substring(start) : req.url.substring(start, end);
-    }
-}
-
 export class Context {
     readonly path: string;
     params: any;
