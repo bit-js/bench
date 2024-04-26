@@ -1,5 +1,5 @@
 # Benchmark
-This repo contains two benchmarks.
+This repo contains 3 benchmarks.
 
 - [`frameworks`](./frameworks): Web frameworks benchmark.
 - [`routers`](./routers): JavaScript URL routers benchmark.
