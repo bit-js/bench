@@ -1,6 +1,5 @@
 import validators from '../validators/assert';
 import { group, bench, run } from 'mitata';
-import { optimizeNextInvocation } from 'bun:jsc';
 import createSamples from './createSamples';
 
 for (let i = 0; i < 15; ++i) bench('noop', () => { });
@@ -27,10 +26,6 @@ group('Nested object', () => {
     for (const name in validators) {
         // @ts-ignore
         const f = validators[name].nestedObject;
-
-        data.forEach(f);
-        optimizeNextInvocation(f);
-
         bench(name, () => data.forEach(f));
     }
 });
@@ -51,10 +46,6 @@ group('User list', () => {
     for (const name in validators) {
         // @ts-ignore
         const f = validators[name].userList;
-
-        data.forEach(f);
-        optimizeNextInvocation(f);
-
         bench(name, () => data.forEach(f));
     }
 });
