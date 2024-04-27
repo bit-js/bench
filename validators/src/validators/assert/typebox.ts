@@ -4,7 +4,12 @@ import { TypeSystemPolicy } from '@sinclair/typebox/system';
 
 TypeSystemPolicy.AllowArrayObject = true;
 
-export default TypeCompiler.Compile(
+function compile(type: any) {
+    // @ts-expect-error Check func is normally private
+    return TypeCompiler.Compile(type).checkFunc;
+}
+
+export const nestedObject = compile(
     Type.Object({
         number: Type.Number(),
 
@@ -22,5 +27,14 @@ export default TypeCompiler.Compile(
             bool: Type.Boolean()
         })
     })
-    // @ts-expect-error Check func is normally private
-).checkFunc;
+);
+
+export const userList = compile(
+    Type.Array(Type.Object({
+        name: Type.String(),
+        age: Type.Number(),
+        nickname: Type.Optional(Type.String())
+    }))
+)
+
+

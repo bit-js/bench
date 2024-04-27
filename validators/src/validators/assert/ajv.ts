@@ -1,6 +1,8 @@
-import { schema } from '@bit-js/vld';
+import Ajv from 'ajv';
 
-export default schema.compile({
+const ajv = new Ajv();
+
+export const nestedObject = ajv.compile({
     type: 'object',
     properties: {
         number: { type: 'number' },
@@ -27,4 +29,17 @@ export default schema.compile({
         'number', 'negNumber', 'maxNumber',
         'string', 'longString', 'boolean', 'deeplyNested'
     ]
+});
+
+export const userList = ajv.compile({
+    type: 'array',
+    items: {
+        type: 'object',
+        properties: {
+            name: { type: 'string' },
+            age: { type: 'number' },
+            nickname: { type: 'string' }
+        },
+        required: ['name', 'age']
+    }
 });

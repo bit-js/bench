@@ -1,8 +1,6 @@
-import Ajv from 'ajv';
+import { compile } from '@bit-js/vld';
 
-const ajv = new Ajv();
-
-export default ajv.compile({
+export const nestedObject = compile.assert({
     type: 'object',
     properties: {
         number: { type: 'number' },
@@ -29,4 +27,17 @@ export default ajv.compile({
         'number', 'negNumber', 'maxNumber',
         'string', 'longString', 'boolean', 'deeplyNested'
     ]
+});
+
+export const userList = compile.assert({
+    type: 'array',
+    items: {
+        type: 'object',
+        properties: {
+            name: { type: 'string' },
+            age: { type: 'number' },
+            nickname: { type: 'string' }
+        },
+        required: ['name', 'age']
+    }
 });
