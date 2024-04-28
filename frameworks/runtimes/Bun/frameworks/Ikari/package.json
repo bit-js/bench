@@ -1,0 +1,8 @@
+{
+  "name": "ikari",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "ikari": "^0.8.1"
+  }
+}
