@@ -3,6 +3,6 @@
   "module": "index.ts",
   "type": "module",
   "dependencies": {
-    "@bit-js/byte": "^1.2.1"
+    "@bit-js/blitz": "^1.2.4"
   }
 }

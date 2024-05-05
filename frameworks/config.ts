@@ -82,9 +82,10 @@ const config: GlobalConfig = {
 
     // Validate each test
     async validateTest(test) {
-        console.info(`- Running test "${test.name}"`);
+        const url = toURL(test.path);
+        console.info(`- Running test "${test.name}": "${url}"`);
 
-        test.validate(await fetch(toURL(test.path), {
+        test.validate(await fetch(url, {
             method: test.method,
             body: typeof test.bodyFile === 'string'
                 ? await Bun.file(test.bodyFile).text()
