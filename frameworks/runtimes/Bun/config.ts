@@ -6,9 +6,7 @@ const env: Env = {
     NODE_ENV: 'production',
     DB_PATH: dbPath,
 
-    BUN_JSC_jitPolicyScale: '0.0',
-    BUN_JSC_thresholdForOptimizeSoon: '0.0',
-    BUN_JSC_thresholdForJITSoon: '0.0',
+    BUN_JSC_useJIT: '0'
 };
 
 const config: RuntimeConfig = {
