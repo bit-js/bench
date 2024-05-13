@@ -110,12 +110,12 @@ export class ResultWriter {
         // Write all results
         {
             const [result] = resultArray;
-            minimalWriter.write(`${result[0]} ${result[1]}: ${result[3]}`);
+            minimalWriter.write(`${result[0]} ${result[1]}: ${result[3]} req/sec`);
         }
 
         for (let i = 1, { length } = resultArray; i < length; ++i) {
             const result = resultArray[i];
-            minimalWriter.write(`\n${result[0]} ${result[1]}: ${result[3]}`);
+            minimalWriter.write(`\n${result[0]} ${result[1]}: ${result[3]} req/sec`);
         }
 
         return minimalWriter;

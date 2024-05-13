@@ -1,6 +1,6 @@
-Blitz 1.2: 31824.89
-Vix 0.9: 31264.06
-Byte 1.2: 30657.03
-Elysia 1.0: 29584.05
-Hono 4.3: 21448.54
-Fastify 4.27: 18157.27
+Blitz 1.2: 31824.89 req/sec
+Vix 0.9: 31264.06 req/sec
+Byte 1.2: 30657.03 req/sec
+Elysia 1.0: 29584.05 req/sec
+Hono 4.3: 21448.54 req/sec
+Fastify 4.27: 18157.27 req/sec
