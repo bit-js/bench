@@ -55,7 +55,7 @@ const config: GlobalConfig = {
         },
         {
             name: 'DB Query',
-            description: 'Query from table Items and return the top 50 items in JSON',
+            description: 'Query from table Items and return the top 10 items in JSON',
 
             path: '/items',
             method: 'GET',

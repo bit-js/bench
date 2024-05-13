@@ -1,0 +1,8 @@
+{
+  "name": "vix",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "vixeny": "^0.0.955"
+  }
+}

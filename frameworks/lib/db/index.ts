@@ -24,5 +24,5 @@ export function prepareDatabase() {
 }
 
 export function getTopItems() {
-    return db.prepare('select * from Items limit 50').all();
+    return db.prepare('select * from Items limit 10').all();
 }

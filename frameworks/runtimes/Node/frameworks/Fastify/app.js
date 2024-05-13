@@ -2,7 +2,7 @@ import fastify from 'fastify';
 import createDB from 'better-sqlite3';
 
 const db = createDB(process.env.DB_PATH);
-const items = db.prepare('select * from Items limit 50');
+const items = db.prepare('select * from Items limit 10');
 
 fastify({ logger: false })
     .get('/', () => 'Hi')

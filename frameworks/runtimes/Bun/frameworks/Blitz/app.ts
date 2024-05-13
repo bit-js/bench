@@ -3,7 +3,7 @@ import { Database } from 'bun:sqlite';
 
 // DB
 const db = new Database(Bun.env.DB_PATH);
-const items = db.query('select * from Items limit 50');
+const items = db.query('select * from Items limit 10');
 
 // Responses
 const jsonInit = {
