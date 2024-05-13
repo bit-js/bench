@@ -3,6 +3,6 @@
   "module": "index.ts",
   "type": "module",
   "dependencies": {
-    "elysia": "1.0.7"
+    "elysia": "1.0.18"
   }
 }
