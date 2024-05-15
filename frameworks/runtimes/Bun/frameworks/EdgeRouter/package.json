@@ -1,8 +1,8 @@
 {
-  "name": "byte",
+  "name": "blitz",
   "module": "index.ts",
   "type": "module",
   "dependencies": {
-    "@bit-js/byte": "^1.3.0"
+    "@bit-js/blitz": "^1.2.5"
   }
 }
