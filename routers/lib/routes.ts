@@ -41,9 +41,6 @@ export class Context {
     params: any;
 
     constructor(req: Request) {
-        const start = req.url.indexOf('/', 12);
-        const end = req.url.indexOf('?', start + 1);
-
-        this.path = end === -1 ? req.url.substring(start) : req.url.substring(start, end);
+        this.path = req.url.substring(16);
     }
 }
