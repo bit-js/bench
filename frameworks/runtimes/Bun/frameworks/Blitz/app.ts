@@ -15,8 +15,8 @@ const msg = new Response('Hi');
 
 const router = new Blitz();
 
-router.put('GET', '/', () => msg.clone());
-router.put('GET', '/user/:id', (ctx) => new Response(ctx.params.id));
-router.put('GET', '/items', () => new Response(JSON.stringify(items.all()), jsonInit));
+router.on('GET', '/', () => msg.clone());
+router.on('GET', '/user/:id', (ctx) => new Response(ctx.params.id));
+router.on('GET', '/items', () => new Response(JSON.stringify(items.all()), jsonInit));
 
 export default { fetch: router.build() };
