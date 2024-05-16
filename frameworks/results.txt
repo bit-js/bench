@@ -4,4 +4,4 @@ EdgeRouter 1.2: 31794.03 req/sec
 Byte 1.2: 30394.4 req/sec
 Elysia 1.0: 29887.68 req/sec
 Hono 4.3: 21500.96 req/sec
-Fastify 4.27: 18520.43 req/secsec
+Fastify 4.27: 18520.43 req/sec
