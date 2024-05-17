@@ -5,7 +5,7 @@ const router = new Blitz();
 
 for (let i = 0, { length } = routes; i < length; ++i) {
     const route = routes[i];
-    router.put(route.method, route.path, route.handler);
+    router.on(route.method, route.path, route.handler);
 }
 
 export default {
