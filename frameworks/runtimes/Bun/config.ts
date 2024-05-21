@@ -5,8 +5,7 @@ import { dbPath } from '@db';
 const env: Env = {
     NODE_ENV: 'production',
     DB_PATH: dbPath,
-
-    BUN_JSC_useJIT: '0'
+    BUN_JSC_UseJit: '0'
 };
 
 const config: RuntimeConfig = {
@@ -14,7 +13,7 @@ const config: RuntimeConfig = {
 
     async build(cwd) {
         console.log('Installing dependencies...');
-        await $`cd ${cwd} && bun update`;
+        await $`cd ${cwd} && bun i`;
     },
 
     version: Bun.version

@@ -14,7 +14,7 @@ const config: RuntimeConfig = {
 
     async build(cwd) {
         console.log('Installing dependencies...');
-        await $`cd ${cwd} && bun update`;
+        await $`cd ${cwd} && bun i`;
     },
 
     // Remove the `v` at the beginning

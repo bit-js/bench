@@ -1,7 +1,8 @@
-Blitz 1.2: 32246.47 req/sec
-Vix 0.9: 31947 req/sec
-EdgeRouter 1.2: 31794.03 req/sec
-Byte 1.2: 30394.4 req/sec
-Elysia 1.0: 29887.68 req/sec
-Hono 4.3: 21500.96 req/sec
-Fastify 4.27: 18520.43 req/sec
+Blitz 1.3 (Bun): 31481.08 req/sec
+Vix 0.9 (Bun): 31427.65 req/sec
+EdgeRouter 1.3 (Bun): 31227.03 req/sec
+Byte 1.3 (Bun): 30225.16 req/sec
+Elysia 1.0 (Bun): 29567.94 req/sec
+Hono 4.3 (Bun): 21789.21 req/sec
+Fastify 4.2 (Node): 18290.57 req/sec
+Express 4.1 (Node): 6522.54 req/sec
