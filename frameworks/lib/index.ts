@@ -44,7 +44,7 @@ for (const runtimeName of readdirSync(runtimesPath)) {
 
         // Boot up the server
         const serverProcess = runtimeConfig.run(`${frameworkPath}/${frameworkConfig.main}`, frameworkPath);
-        Bun.sleepSync(7000);
+        Bun.sleepSync(10000);
 
         try {
             // Test the server 

@@ -5,7 +5,15 @@ import { dbPath } from '@db';
 const env: Env = {
     NODE_ENV: 'production',
     DB_PATH: dbPath,
-    BUN_JSC_UseJit: '0'
+
+    BUN_JSC_reoptimizationRetryCounterMax: '1000',
+    BUN_JSC_jitPolicyScale: '0.0',
+    BUN_JSC_thresholdForJITAfterWarmUp: '0',
+
+    BUN_JSC_thresholdForOptimizeSoon: '0',
+    BUN_JSC_thresholdForFTLOptimizeSoon: '0',
+
+    BUN_JSC_maximumOptimizationDelay: '0'
 };
 
 const config: RuntimeConfig = {
