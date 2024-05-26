@@ -17,7 +17,7 @@ const env: Env = {
 };
 
 const config: RuntimeConfig = {
-    run: (path, cwd) => Bun.spawn(['bun', 'run', path], { env, cwd, stdout: 'inherit' }),
+    run: (path, cwd) => Bun.spawn(['bun', 'run', path], { env, cwd, stdout: 'ignore' }),
 
     async build(cwd) {
         console.log('Installing dependencies...');
