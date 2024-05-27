@@ -6,6 +6,6 @@ const items = db.prepare('select * from Items limit 10');
 
 fastify({ logger: false })
     .get('/', () => 'Hi')
-    .get('/user/:id', (req) => req.params.id)
+    .get('/user/:id/and/:name', ({ params }) => params.id + params.name)
     .get('/items', () => items.all())
     .listen({ port: 3000 });

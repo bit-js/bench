@@ -6,5 +6,8 @@ const items = db.query('select * from Items limit 10');
 
 export default new Quark()
     .get('/', send.body('Hi'))
-    .get('/user/:id', (ctx) => ctx.body(ctx.params.id))
+    .get('/user/:id/and/:name', (ctx) => {
+        const { params } = ctx;
+        return ctx.body(params.id + params.name);
+    })
     .get('/items', (ctx) => ctx.json(items.all()));

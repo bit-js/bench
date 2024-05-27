@@ -8,8 +8,8 @@ const app = express()
     .get('/', (_, res) => {
         res.end('Hi');
     })
-    .get('/user/:id', (req, res) => {
-        res.end(req.params.id);
+    .get('/user/:id/and/:name', ({ params }, res) => {
+        res.end(params.id + params.name);
     })
     .get('/items', (_, res) => {
         res.json(items.all());

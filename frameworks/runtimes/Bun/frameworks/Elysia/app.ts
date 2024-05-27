@@ -6,7 +6,7 @@ const items = db.query('select * from Items limit 10');
 
 const app = new Elysia()
     .get('/', 'Hi')
-    .get('/user/:id', (ctx) => ctx.params.id)
+    .get('/user/:id/and/:name', ({ params }) => params.id + params.name)
     .get('/items', () => items.all());
 
 app.listen(3000);

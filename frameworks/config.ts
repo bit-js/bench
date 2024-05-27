@@ -25,7 +25,7 @@ const config: GlobalConfig = {
             name: 'Params',
             description: 'Should return the query value as a response',
 
-            path: `/user/[a-z][a-z][0-9]`,
+            path: `/user/[a-z][a-z][0-9]/and/[a-z][a-z][0-9]`,
             method: 'GET',
 
             async validate(res) {
