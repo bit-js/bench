@@ -6,8 +6,5 @@ const items = db.query('select * from Items limit 10');
 
 export default new Hono()
     .get('/', (ctx) => ctx.body('Hi'))
-    .get('/user/:id/and/:name', (ctx) => {
-        const { req } = ctx;
-        return ctx.body(req.param('id') + req.param('name'));
-    })
+    .get('/user/:id', (ctx) => ctx.body(`Hi ${ctx.req.param('id')}`))
     .get('/items', (ctx) => ctx.json(items.all()));

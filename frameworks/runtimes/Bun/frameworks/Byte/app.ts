@@ -6,8 +6,5 @@ const items = db.query('select * from Items limit 10');
 
 export default new Byte()
     .get('/', send.body('Hi'))
-    .get('/user/:id/and/:name', (ctx) => {
-        const { params } = ctx;
-        return ctx.body(params.id + params.name);
-    })
+    .get('/user/:id', (ctx) => ctx.body(`Hi ${ctx.params.id}`))
     .get('/items', (ctx) => ctx.json(items.all()));

@@ -14,8 +14,9 @@ export default {
             r: () => msg.clone()
         },
         {
-            path: '/user/:id/and/:name',
-            f: ({ param }) => param.id + param.name
+            path: '/user/:id',
+            param: { unique: true },
+            f: (ctx) => `Hi ${ctx.param}`
         },
         {
             path: '/items',

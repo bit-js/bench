@@ -16,7 +16,7 @@ const msg = new Response('Hi');
 const router = new EdgeRouter();
 
 router.on('GET', '/', () => msg.clone());
-router.on('GET', '/user/:id/and/:name', ({ params }) => new Response(params.id + params.name));
+router.on('GET', '/user/:id', (ctx) => new Response(`Hi ${ctx.params.id}`));
 router.on('GET', '/items', () => new Response(JSON.stringify(items.all()), jsonInit));
 
 export default { fetch: router.build() };
