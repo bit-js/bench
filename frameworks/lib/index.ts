@@ -34,10 +34,12 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         console.log(`Preparing framework: ${frameworkName}`);
 
         // Run build script
-        if (typeof runtimeConfig.build === 'function')
-            await runtimeConfig.build(frameworkPath);
-        if (typeof frameworkConfig.build === 'function')
-            await frameworkConfig.build(frameworkPath);
+        if (isTestMode) {
+            if (typeof runtimeConfig.build === 'function')
+                await runtimeConfig.build(frameworkPath);
+            if (typeof frameworkConfig.build === 'function')
+                await frameworkConfig.build(frameworkPath);
+        }
 
         // Prepare result store
         writer.prepareFramework(runtimeName, frameworkName, frameworkConfig);

@@ -10,7 +10,7 @@ export interface RuntimeConfig {
     /**
      * Default build command
      */
-    build?(cwd: string): Promise<void>;
+    build?(cwd: string): Promise<any>;
 
     /**
      * Current runtime version

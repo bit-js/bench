@@ -10,11 +10,11 @@ const env: Env = {
 const version = await $`node -v`.text();
 
 const config: RuntimeConfig = {
-    run: (path, cwd) => Bun.spawn(['node', path], { env, cwd, stdout: 'ignore' }),
+    run: (path, cwd) => Bun.spawn(['node', path], { env, cwd }),
 
-    async build(cwd) {
+    build(cwd) {
         console.log('Installing dependencies...');
-        await $`cd ${cwd} && bun i`;
+        return $`cd ${cwd} && bun i`;
     },
 
     // Remove the `v` at the beginning

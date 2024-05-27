@@ -1,9 +1,8 @@
 {
-    "name": "quark",
-    "module": "index.ts",
-    "type": "module",
-    "dependencies": {
-      "@bit-js/quark": "^0.0.2"
-    }
+  "name": "quark",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "@bit-js/quark": "^0.0.4"
   }
-  
+}

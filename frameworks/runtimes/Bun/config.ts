@@ -4,24 +4,15 @@ import { dbPath } from '@db';
 
 const env: Env = {
     NODE_ENV: 'production',
-    DB_PATH: dbPath,
-
-    BUN_JSC_reoptimizationRetryCounterMax: '1000',
-    BUN_JSC_jitPolicyScale: '0.0',
-    BUN_JSC_thresholdForJITAfterWarmUp: '0',
-
-    BUN_JSC_thresholdForOptimizeSoon: '0',
-    BUN_JSC_thresholdForFTLOptimizeSoon: '0',
-
-    BUN_JSC_maximumOptimizationDelay: '0'
+    DB_PATH: dbPath
 };
 
 const config: RuntimeConfig = {
-    run: (path, cwd) => Bun.spawn(['bun', 'run', path], { env, cwd, stdout: 'ignore' }),
+    run: (path, cwd) => Bun.spawn(['bun', 'run', path], { env, cwd }),
 
-    async build(cwd) {
+    build(cwd) {
         console.log('Installing dependencies...');
-        await $`cd ${cwd} && bun i`;
+        return $`cd ${cwd} && bun i`;
     },
 
     version: Bun.version
