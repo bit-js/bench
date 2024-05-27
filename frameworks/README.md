@@ -14,7 +14,7 @@ bun i
 bun bench
 ```
 
-The results are in [results.md](./results.md)
+The results are in [results.md](./results.md), measured in average requests per seconds.
 
 The global config [file](./config.ts) contains tests and test validators.
 
