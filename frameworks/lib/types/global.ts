@@ -2,7 +2,8 @@ export interface Test {
     name: string;
     description: string;
 
-    path: string;
+    path?: string;
+    pathRegex?: string;
     method?: string;
 
     headers?: Record<string, string>;

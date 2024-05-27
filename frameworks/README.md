@@ -1,23 +1,11 @@
 # Web framework benchmark
-This benchmark requires `bombardier` and `bun`.
 
-## Install
-If you don't have Go installed, check out [go.dev](//go.dev/doc/install).
-
-To install `bombardier`:
-```bash
-# Install the CLI without a `go.mod` file
-go install -mod=mod github.com/codesenberg/bombardier
-
-# Check after install
-bombardier --version
-```
-
-To install `bun`, check out the guide [here](//bun.sh/docs/installation).
+This benchmark requires `oha` and `bun`.
 
 ## Usage
 
 To run the benchmark:
+
 ```bash
 # Install required dependencies
 bun i

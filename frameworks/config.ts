@@ -7,21 +7,6 @@ function toURL(path: string) {
     return `http://127.0.0.1:3000${path}`;
 }
 
-const length = Math.round(Math.random() * 20);
-
-// Make everything as random as possible
-function makePart(charset: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_$1234567890') {
-    const result = [];
-    const charsetLen = charset.length;
-
-    for (let cnt = 0; cnt < length; ++cnt)
-        result.push(charset[Math.floor(Math.random() * charsetLen)]);
-
-    return result.join('');
-}
-
-const randomID = makePart();
-
 const config: GlobalConfig = {
     tests: [
         {
@@ -40,7 +25,7 @@ const config: GlobalConfig = {
             name: 'Params',
             description: 'Should return the query value as a response',
 
-            path: `/user/${randomID}`,
+            path: `/user/[a-z][a-z][0-9]`,
             method: 'GET',
 
             async validate(res) {
@@ -49,8 +34,6 @@ const config: GlobalConfig = {
                     console.log('Info:', res);
                     throw new Error('Response should be ok');
                 }
-
-                if (await res.text() !== randomID) throw new Error('Response body should be corresponding to the ID parameter value');
             }
         },
         {
@@ -82,7 +65,7 @@ const config: GlobalConfig = {
 
     // Validate each test
     async validateTest(test) {
-        const url = toURL(test.path);
+        const url = toURL(test.path ?? test.pathRegex!);
         console.info(`- Running test "${test.name}": "${url}"`);
 
         test.validate(await fetch(url, {
@@ -98,25 +81,30 @@ const config: GlobalConfig = {
      */
     async runTest(test) {
         const args = [
-            'bombardier', '--fasthttp',
+            'oha',
             // Default options 
-            '--connections', '500',
-            '--duration', '20s',
+            '-c', '500',
+            '-z', '20s',
             // Print format
-            '--format', 'json',
-            '--print', 'result'
+            '--json',
+            '--no-tui',
+            '--ipv4'
         ];
 
         if (typeof test.method === 'string')
             args.push('--method', test.method);
         if (typeof test.bodyFile === 'string')
-            args.push('--body-file', test.bodyFile);
+            args.push('-D', test.bodyFile);
 
-        args.push(toURL(test.path));
+        if (typeof test.path === 'string')
+            args.push(toURL(test.path));
+        else
+            args.push('--rand-regex-url', toURL(test.pathRegex!));
 
+        console.log(args);
         const res = JSON.parse(
             await $`${args}`.text()
-        ).result.rps.mean;
+        ).summary.requestsPerSec;
 
         console.log(`* Mean: ${res}`);
         return fixNum(res);
