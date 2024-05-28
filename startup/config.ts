@@ -1,5 +1,5 @@
 export default {
-  pathCount: 1000,
-  pathLength: 1000,
-  paramsCount: 1000
+  pathCount: 500,
+  pathLength: 20,
+  paramsCount: 16
 }
