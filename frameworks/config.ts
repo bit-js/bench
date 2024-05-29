@@ -84,7 +84,7 @@ const config: GlobalConfig = {
             'oha',
             // Default options 
             '-c', '500',
-            '-z', '60s',
+            '-z', '30s',
             // Print format
             '--json',
             '--no-tui',

@@ -7,9 +7,7 @@ const items = db.query('select * from Items limit 10');
 
 // Responses
 const jsonInit = {
-    headers: {
-        'Content-Type': 'application/json'
-    }
+    headers: [['Content-Type', 'application/json']]
 };
 const msg = new Response('Hi');
 
