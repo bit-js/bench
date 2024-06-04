@@ -1,0 +1,5 @@
+{
+  "name": "bun",
+  "module": "index.ts",
+  "type": "module"
+}
