@@ -3,6 +3,6 @@
   "module": "index.ts",
   "type": "module",
   "dependencies": {
-    "@bit-js/quark": "^0.1.4"
+    "@bit-js/quark": "^0.1.5"
   }
 }
