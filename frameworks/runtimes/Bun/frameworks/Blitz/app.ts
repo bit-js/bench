@@ -16,4 +16,4 @@ router.on('GET', '/', () => msg.clone());
 router.on('GET', '/user/:id', (ctx) => new Response(`Hi ${ctx.params.id}`));
 router.on('GET', '/items', () => new Response(JSON.stringify(items.all()), jsonInit));
 
-export default router.setupInline();
+export default router;

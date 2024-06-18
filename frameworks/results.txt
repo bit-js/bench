@@ -1,9 +1,1 @@
-Blitz 1.3 (Bun): 27017.49 req/sec
-Vix 0.9 (Bun): 26255.56 req/sec
-EdgeRouter 1.3 (Bun): 25832.43 req/sec
-Quark 0.1 (Bun): 25829.78 req/sec
-Byte 1.5 (Bun): 25533.22 req/sec
-Elysia 1.0 (Bun): 25494.39 req/sec
-Hono 4.3 (Bun): 24026.92 req/secHono 4.3 (Bun): 27127.27 req/sec
-Fastify 4.2 (Node): 12655.45 req/sec
-Express 4.1 (Node): 6074.79 req/sec
+
