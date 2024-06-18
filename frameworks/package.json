@@ -4,6 +4,7 @@
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
+    "tsx": "^4.15.6",
     "typescript": "latest"
   },
   "scripts": {

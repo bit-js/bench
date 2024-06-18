@@ -1,8 +1,9 @@
 import Blitz from '@bit-js/blitz';
 import { Database } from 'bun:sqlite';
+import { dbPath } from '@db';
 
 // DB
-const db = new Database(Bun.env.DB_PATH);
+const db = new Database(dbPath);
 const items = db.query('select * from Items limit 10');
 
 // Responses
@@ -15,4 +16,4 @@ router.on('GET', '/', () => msg.clone());
 router.on('GET', '/user/:id', (ctx) => new Response(`Hi ${ctx.params.id}`));
 router.on('GET', '/items', () => new Response(JSON.stringify(items.all()), jsonInit));
 
-export default { fetch: router.build() };
+export default router.setupInline();

@@ -1,7 +1,8 @@
 import { Quark, send } from '@bit-js/quark';
 import { Database } from 'bun:sqlite';
+import { dbPath } from '@db';
 
-const db = new Database(Bun.env.DB_PATH);
+const db = new Database(dbPath);
 const items = db.query('select * from Items limit 10');
 
 export default new Quark()

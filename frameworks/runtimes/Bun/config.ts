@@ -1,11 +1,7 @@
 import type { Env, RuntimeConfig } from '@typings/runtime';
 import { $ } from 'bun';
-import { dbPath } from '@db';
 
-const env: Env = {
-    NODE_ENV: 'production',
-    DB_PATH: dbPath
-};
+const env: Env = { NODE_ENV: 'production' };
 
 const config: RuntimeConfig = {
     run: (path, cwd) => Bun.spawn(['bun', 'run', path], { env, cwd }),

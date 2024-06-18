@@ -12,5 +12,5 @@ export interface FrameworkConfig {
     /**
      * Build script
      */
-    build?(cwd: string): Promise<void>;
+    build?(cwd: string): Promise<any>;
 }

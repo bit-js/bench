@@ -8,7 +8,7 @@ import { ResultWriter } from './result';
 import type { RuntimeConfig } from '@typings/runtime';
 import type { FrameworkConfig } from '@typings/framework';
 
-import { prepareDatabase } from './db';
+import { prepareDatabase } from './db/setup';
 
 prepareDatabase();
 
@@ -34,19 +34,17 @@ for (const runtimeName of readdirSync(runtimesPath)) {
         console.log(`Preparing framework: ${frameworkName}`);
 
         // Run build script
-        if (isTestMode) {
-            if (typeof runtimeConfig.build === 'function')
-                await runtimeConfig.build(frameworkPath);
-            if (typeof frameworkConfig.build === 'function')
-                await frameworkConfig.build(frameworkPath);
-        }
+        if (typeof runtimeConfig.build === 'function')
+            await runtimeConfig.build(frameworkPath);
+        if (typeof frameworkConfig.build === 'function')
+            await frameworkConfig.build(frameworkPath);
 
         // Prepare result store
         writer.prepareFramework(runtimeName, frameworkName, frameworkConfig);
 
         // Boot up the server
         const serverProcess = runtimeConfig.run(`${frameworkPath}/${frameworkConfig.main}`, frameworkPath);
-        Bun.sleepSync(10000);
+        Bun.sleepSync(15000);
 
         try {
             // Test the server 
@@ -66,7 +64,5 @@ for (const runtimeName of readdirSync(runtimesPath)) {
             serverProcess.kill();
             writer.finalizeResult(frameworkName);
         }
-
-        Bun.sleepSync(1000);
     }
 }
