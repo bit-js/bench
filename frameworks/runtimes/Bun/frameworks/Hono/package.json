@@ -3,6 +3,6 @@
   "module": "index.ts",
   "type": "module",
   "dependencies": {
-    "hono": "^4.4.5"
+    "hono": "^4.5.0"
   }
 }
