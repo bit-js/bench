@@ -1,0 +1,15 @@
+{
+  "name": "fsrouters",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@bit-js/blitz": "^1.4.0",
+    "mitata": "^0.1.11"
+  }
+}
