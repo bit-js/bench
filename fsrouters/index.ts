@@ -1,8 +1,10 @@
 import { group, bench, run } from 'mitata';
+import { resolve } from 'path';
 import { FileSystemRouter } from '@bit-js/blitz';
 
 const reqs = ['/index.html', '/styles/globals.css', '/scripts/index.js'].map((path) => new Request('http://localhost:3000' + path));
 
+// Get absolute path
 group('Bun', () => {
   // Native
   const native = new Bun.FileSystemRouter({
@@ -15,7 +17,8 @@ group('Bun', () => {
 
   // Custom
   const custom = new FileSystemRouter({
-    on: (path) => path,
+    style: 'preserve',
+    on: resolve,
     scan: (dir) => new Bun.Glob('**/*').scanSync(dir)
   }).scan('public');
 
